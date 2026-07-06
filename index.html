@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="title">Elechtrochemistry</title>
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+  <nav id="navbar">
+    <header>
+    <h3>A Practical Beginner’s Guide to Cyclic Voltammetry</h3>
+    </header>
+    <ul>
+      <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+      <li><a class="nav-link" href="#Cyclic_Voltammetry">Cyclic Voltammetry</a></li>
+      <li><a class="nav-link" href="#Cyclic_Voltammetry_Profile">Cyclic Voltammetry Profile</a></li>
+      <li><a class="nav-link"  href="#Nernst_Equation">Nernst Equation</a></li>
+      <li><a class="nav-link" href="#Scan_Rate">Scan Rate</a></li>
+      <li><a class="nav-link" href="#Electrochemical_Cell">Electrochemical Cell</a></li>
+      <li><a class="nav-link" href="#Preparation_of_Electrolyte">Preparation of Electrolyte</a></li>
+      <li><a class="nav-link" href="#Supporting_Electrolyte">Supporting Electrolyte</a></li>
+      <li><a class="nav-link" href="#Electrodes">Electrodes</a></li>
+      <li><a class="nav-link" href="#Working_Electrode_(WE)">Working Electrode (WE)</a></li>
+      <li><a class="nav-link" href="#Reference_Electrode_(RE)">Reference Electrode (RE)</a></li>
+      <li><a class="nav-link"  href="#Counter_Electrode_(CE)">Counter Electrode (CE)</a></li>
+      <li><a class="nav-link" href="#Data_Acquisition">Data Acquisition</a></li>
+      <li><a class="nav-link" href="#Recording_the_Cyclic_Voltammogram">Recording the Cyclic Voltammogram</a></li>
+      <li><a class="nav-link" href="#Reference">Reference</a></li>
+    </ul>
+  </nav>
+  </aside>
+  <main id="main-doc">
+    <section class="main-section" id="Introduction">
+      <header>Introduction</header>
+      <p>Electrochemistry is a powerful tool to probe reactions involving electron transfers. Electrochemistry relates the flow of electrons to
+chemical changes. In inorganic chemistry, the resulting chemical change is often the oxidation or reduction of a metal complex. To understand the difference between a chemical reduction and an electrochemical reduction, consider the example of the reduction of ferrocenium [Fe(Cp)<sub>2</sub>]<sup>+</sup> (Cp = cyclopentadienyl), abbreviated as Fc<sup>+</sup>, to ferrocene [Fe(Cp)<sub>2</sub>], abbreviated as Fc:</p>
+      <ul>
+        <li><code>Through a chemical reducing agent: Fc<sup>+</sup> + [Co(Cp*)<sub>2</sub>]⇌
+Fc + [Co(Cp*)<sub>2</sub>]<sup>+</sup></code></li>
+        <li><code>At an electrode: Fc<sup>+</sup> + e<sup>−</sup> ⇌ Fc</code></li>
+        </ul>
+      <p>Why does [Co(Cp*)<sub>2</sub>] (Cp* = pentamethylcyclopentadienyl) reduce Fc<sup>+</sup>? In the simplest explanation, an electron transfers
+from [Co(Cp*)<sub>2</sub>] to Fc<sup>+</sup> because the lowest unoccupied molecular orbital (LUMO) of Fc<sup>+</sup> is at a lower energy than the electron in the highest occupied molecular orbital (HOMO) of [Co(Cp*)<sub>2</sub>]. The transfer of an electron between the two molecules in solution is thermodynamically favorable, and the difference in energy levels is the driving force for the reaction.</p>
+      <p>In an electrochemical reduction, Fc<sup>+</sup> is reduced via heterogeneous electron transfer from an electrode; but what is the driving force for this process? An electrode is an electrical conductor,
+typically platinum, gold, mercury, or glassy carbon. Through use of an external power source (such as a potentiostat), voltage can be applied to the electrode to modulate the energy of the electrons in the electrode. When the electrons in the electrode
+are at a higher energy than the LUMO of Fc<sup>+</sup>, an electron from the electrode is transferred to Fc<sup>+</sup>. The driving force for this electrochemical reaction is again the energy difference between that of the electrode and the LUMO of Fc<sup>+</sup>.</p>
+    </section>
+
+    <section class="main-section" id="Cyclic_Voltammetry">
+      <header>Cyclic Voltammetry</header>
+      <p>Cyclic voltammetry (CV) is a powerful and popular electrochemical technique commonly employed to investigate the reduction and oxidation processes of molecular species. CV is also invaluable to study electron transfer-initiated chemical reactions,
+which includes catalysis.<br><br>The aim of this technical documentation is to provide the readers with the tools necessary to understand the key features of Figure 1. The following section will provide clues to understand the data, the reason for including the experimental parameters, their meaning and influence, and a broader discussion about how
+to set up the experiment and what parameters to consider when recording your own data. Finally, a brief description of frequently encountered responses in cyclic voltammetry will be given.</p>
+    </section>
+
+    <section class="main-section" id="Cyclic_Voltammetry_Profile">
+      <header>Cyclic Voltammetry Profile</header>
+      <p>The traces on a screen are called voltammograms or cyclic voltammograms. The x-axis represents a parameter that is imposed on the system, here the applied potential (E), while the
+y-axis is the response, here the resulting current (i) passed. The current axis is sometimes not labeled (instead a scale bar is inset to the graph. Two conventions are commonly used to
+report CV data, but seldom is a statement provided that describes the sign convention used for acquiring and plotting the data. </p>
+      <figure>
+        <img id="image" src="voltammograms.png" alt="Voltammograms of a bare electrode">
+        <figcaption id="img-caption">Figure 1. Voltammograms of a bare electrode under N<sub>2</sub> (blue trace); a bare electrode under air (red trace); [CoCp(dppe)(CH3CN)](PF6)2 (dppe = diphenylphosphinoethane) under N2 (green trace); [CoCp- (dppe)(CH3CN)](PF6)2 under air (orange trace).</figcaption>
+      </figure>
+    </section>
+
+    <section class="main-section" id="Nernst_Equation">
+      <header>Nernst Equation</header>
+      <p>Why are there peaks in a cyclic voltammogram? Consider the equilibrium between ferrocenium (Fc<sup>+</sup>) and ferrocene (Fc).
+This equilibrium is described by the Nernst equation (eq 1). The Nernst equation relates the potential of an electrochemical cell (E) to the standard potential of a species (E<sup>0</sup>) and the relative activities of the oxidized (Ox) and reduced (Red) analyte in the system at equilibrium. In the equation, F is Faraday’s constant, R is the universal gas constant, n is the number of electrons, and T is the temperature</p>
+      <code>E = E<sup>0</sup> + (R*T/n*F)*ln(Ox/Red) = E<sup>0</sup> + 2.3026*(R*T/n*F)*log<sub>10</sub>(Ox/Red)</code>
+      <p>The Nernst equation provides a powerfulway to predict how a system will respond to a change of concentration of species in solution or a change in the electrode potential. To illustrate, if a potential of E = E<sup>°′</sup> ≈ E<sub>1/2</sub> is applied to our example Fc<sup>+</sup> solution, the Nernst equation predicts that Fc<sup>+</sup> will be reduced to Fc until [Fc<sup>+</sup>] = [Fc], and equilibrium is achieved Alternatively, when the potential is scanned during the CV experiment,
+the concentration of the species in solution near the electrode changes over time in accordance with the Nernst equation. When a solution of Fc<sup>+</sup> is scanned to negative potentials, Fc<sup>+</sup> is reduced to Fc locally at the electrode, resulting in the measurement of a current and depletion of Fc<sup>+</sup> at the electrode
+surface.</p>
+    </section>
+
+    <section class="main-section" id="Scan_Rate">
+      <header>Scan Rate</header>
+      <p>The scan rate of the experiment controls how fast the applied potential is scanned. Faster scan rates lead to a decrease in the size of the diffusion layer; as a consequence, higher currents are observed. For electrochemically reversible electron transfer processes involving freely diffusing redox species, the Randles−Sevcik equation  describes how the peak current ip (A) increases linearly with the square root of the scan rate
+υ (V s<sup>−1</sup>), where n is the number of electrons transferred in the redox event, A (cm<sup>2</sup>) is the electrode surface area (usually treated
+as the geometric surface area), Do (cm<sup>2</sup> s<sup>−1</sup>) is the diffusion coefficient of the oxidized analyte, and C<sup>0</sup> (mol cm<sup>−3</sup>) is the bulk concentration of the analyte.</p>
+      <code>i<sub>p</sub> = 0.446*n*F*A*C<sup>0</sup>*(n*F*v*D<sub>0</sub>/R*T)<sup>(1/2)</sup></code>
+      <p>The Randles−Sevcik equation can give indications as to whether an analyte is freely diffusing in solution. As analytes can sometimes adsorb to the electrode surface,it is essential to assess whether an analyte remains homogeneous in solution prior to analyzing its reactivity. In addition to verifying that the analyte is freely diffusing, the Randles−Sevcik equation may be used to calculate diffusion coefficients.</p>
+    </section>
+    
+    <section class="main-section" id="Electrochemical_Cell">
+      <header>Electrochemical Cell</header>
+      <p>In the experimental section of papers describing electrochemical measurements, a brief description is generally given for the experimental setup used to collect the data. The vessel used for a cyclic voltammetry experiment is called an electrochemical cell. The subsequent sections will describe the role of each component and how to assemble an electrochemical cell to collect
+data during CV experiments.</p>
+      <figure>
+      <img id="image" src="three-electrode cell.png" alt="Three electrode cell">
+      <figcaption id="img-caption">Figure 2. Schematic representation of an electrochemical cell for CV experiments.</figcaption>
+      </figure>
+    </section>
+
+    <section class="main-section" id="Preparation_of_Electrolyte">
+      <header>Preparation of Electrolyte</header>
+      <p>As electron transfer occurs during a CV experiment, electrical
+neutrality is maintained via migration of ions in solution. As electrons transfer from the electrode to the analyte, ions move in solution to compensate the charge and close the electrical circuit. A salt, called a supporting electrolyte, is dissolved in the solvent to help decrease the solution resistance. The mixture of
+the solvent and supporting electrolyte is commonly termed the “electrolyte solution.”
+Solvent. A good solvent has these characteristics:</p>
+<ul>
+  <li>It is liquid at experimental temperatures.</li>
+  <li>It dissolves the analyte and high concentrations of the
+supporting electrolyte completely.</li>
+<li>It is stable toward oxidation and reduction in the potential range of the experiment.</li>
+<li>It does not lead to deleterious reactions with the analyte or supporting electrolyte.</li>
+<li>It can be purified.</li>
+</ul>
+    </section>
+
+    <section class="main-section" id="Supporting_Electrolyte">
+      <header>Supporting Electrolyte</header>
+      <p>A good supporting electrolyte has
+these characteristics:</p>
+      <ul>
+        <li>It is highly soluble in the solvent chosen.</li>
+        <li>It is chemically and electrochemically inert in the conditions of the experiment.</li>
+        <li>It can be purified.</li>
+      </ul>
+      <p>Large supporting electrolyte concentrations are necessary to increase solution conductivity. As electron transfers occur at the electrodes, the supporting electrolyte will migrate to balance the charge and complete the electrical circuit. The conductivity
+of the solution is dependent on the concentrations of the dissolved salt.  Without the electrolyte available to achieve charge balance, the solution will be resistive to charge transfer
+(see How To Minimize Ohmic Drop below). High absolute electrolyte concentrations are thus necessary. Large supporting electrolyte concentrations are also necessary to limit analyte migration. Movement of the analyte to the
+electrode surface is controlled by three modes of mass transport:
+<ul>
+  <li> convection;
+  <li> migration;
+  <li> diffusion. 
+</ul> A species that moves by convection is under the action of mechanical forces (e.g., stirring
+or vibrations). In migration, ionic solute moves by action of an electric field (e.g., positive ions are attracted to negative electrodes). Diffusion arises from a concentration difference between
+two points within the electrochemical cell; this concentration gradient results in analyte movement from areas of high to areas of low concentration. All theoretical treatments and modeling
+exclude migration and convection of the analyte. To ensure that these mechanisms of mass transport are minimized convection is reduced by the absence of stirring or vibrations, and migration is
+minimized through the use of electrolyte in high concentration. High electrolyte concentration relative to the analyte concentration ensures that it is statistically more probable that
+the electrolyte will migrate to the electrode surface for charge
+balance.</p>
+    </section>
+
+    <section class="main-section" id="Electrodes">
+      <header>Electrodes</header>
+      <p>As an example of a 3 electrode system we can indicate the following a three-electrode setup, including: 
+        <ol>
+          <li> A glassy carbon working electrode;
+          <li> A glass carbon counter electrode;
+          <li> Ag+/Ag pseudoreference electrode.
+        </ol> This setup (Figure 2) is typical for common electrochemical experiments, including cyclic voltammetry, and the three electrodes represent a working electrode, counter electrode, and reference electrode, respectively. While the current flows between the working and counter electrodes, the reference electrode is used to accurately measure the applied potential relative to a stable reference reaction.</p>
+    </section>
+
+    <section class="main-section" id="Working_Electrode_(WE)">
+      <header>Working Electrode (WE)</header>
+      <p>The working electrode carries out
+the electrochemical event of interest. A potentiostat is used to control the applied potential of the working electrode as a function of the reference electrode potential. The most important
+aspect of the working electrode is that it is composed of redoxinert material in the potential range of interest. The type of working electrode can be varied from experiment to experiment to provide different potential windows or to reduce/promote surface adsorption of the species of interest.<br><br>It is necessary to polish the electrode prior to measurements, and often, electrodes need to be repolished between measurements over
+the course of an experiment because some analytes are prone to electrode surface adsorption. To determine if an analyte is adsorbed to the electrode surface, a simple rinse test can be performed: after
+recording a voltammogram, the WE is rinsed and then transferred to an electrolyte-only solution. If no electrochemical features are observed by CV, this rules out strong adsorption (although not weak adsorption). Since electrodes are capable of adsorbing species during an experiment, it is good practice to polish them after every
+experiment. Ideally, separate polishing pads are used before and after experiments to avoid contamination.<br><br> A simple way to polish electrodes is with figure-eight motions on a cloth polishing pad in a water-alumina slurry.When using circular motions, the polishing is often uneven, and the surface can become slanted.</p>
+      <figure>
+        <img id="image" src="How to polish electrodes.png" alt="electrode polishing technique">
+        <figcaption id="img-caption">Figure 3. How to polish glassy carbon electrodes?</figcaption>
+      </figure>
+    </section>
+
+    <section class="main-section" id="Reference_Electrode_(RE)">
+      <header>Reference Electrode (RE)</header>
+      <p>A reference electrode has a welldefined and stable equilibrium potential. It is used as a reference point against which the potential of other electrodes can be measured in an electrochemical cell. The applied
+potential is thus typically reported as “vs” a specific reference. There are a few commonly used (and usually commercially available) electrode assemblies that have an electrode potential independent of the electrolyte used in the cell. Some common reference electrodes used in aqueous media include:
+<ul>
+  <li> Saturated calomel electrode (SCE);
+  <li> Standard hydrogen electrode
+(SHE);
+  <li> Silver chloride (AgCl/Ag) electrode.
+</ul> These reference electrodes are generally separated from the solution by a porous frit. It is best to minimize junction potentials by matching the solvent and electrolyte in the reference compartment to the one used in the experiment.</p>
+    </section>
+
+    <section class="main-section" id="Counter_Electrode_(CE)">
+      <header>Counter Electrode (CE)</header>
+      <p>When a potential is applied to the working electrode such that reduction (or oxidation) of the analyte can occur, current begins to flow. The purpose of the
+counter electrode is to complete the electrical circuit. Current is recorded as electrons flow between the WE and CE. To ensure that the kinetics of the reaction occurring at the counter electrode do not inhibit those occurring at the working electrode, the surface area of the counter electrode is greater than the surface area of the working electrode. A platinum wire or disk is typically used as a counter electrode, though carbon-based counter electrodes
+are also available. When studying a reduction at the WE, an oxidation occurs at the CE. As such, the CE should be chosen to be as inert as possible. Counter electrodes can generate byproducts depending on the experiment, therefore, these electrodes may sometimes be isolated from the rest of the system by a fritted compartment. One example is the oxidative polymerization of THF that can occur at the CE when studying a reductive process in THF at the WE.</p>
+    </section>
+
+    <section class="main-section" id="Data_Acquisition">
+      <header>Data Acquisition</header>
+      <p><i>Recording a Background Scan.</i> Now that the components are ready, the cell can be assembled, and voltammograms can be
+recorded. When no electroactive species have been added to the electrolyte solution, voltammograms should exhibit the profile of the blue trace in Figure 1. A small current is still flowing between the electrodes, but no distinct features are observed. This background
+current is sometimes called capacitive current, doublelayer current, or non-Faradaic current. The intensity of the current varies linearly with the scan rate used. The background scan is essential to test if all the components of the cells are in good condition before adding the analyte as well as to quantify the capacitive current.<br><br><i>Importance of an Inert Atmosphere</i>. Once the electrolyte solution is prepared, and the cell is assembled, one may begin
+experiments. Consider a 0.25 M [NBu<sub>4</sub>][PF<sub>6</sub>] solution in acetonitrile prepared in a fume hood. The potential window for this acetonitrile solution is wide. If the potential is scanned within this window, no redox events should be observed (i.e., the current response should be relatively flat). However, if this experiment is performed with the solution prepared as
+described above, one would instead see an unexpected peak as the potential is scanned cathodically (Figure 1, red trace). In the
+reverse scan, another peak emerges that seems related to the first peak. Why are these peaks observed in the absence of the analyte?
+The answer lies in the fact that the solution was prepared in open atmosphere. While nitrogen is electrochemically inert within this window, oxygen is not. Oxygen undergoes a reversible
+one-electron reduction to form the oxygen radical anion (superoxide, O<sub>2</sub><sup>•−</sup>). The peaks in the red trace of Figure 1 is
+attributed to the reduction of oxygen and then the subsequent reoxidation. Note that in solvents besides acetonitrile, the reduction of oxygen may not be cleanly reversible.<br>In electrochemical experiments, the presence of oxygen can also alter the electrochemical response of analytes. For example, under inert atmosphere, [CoCp(dppe)(CH<sub>3</sub>CN)][PF<sub>6</sub>]<sub>2</sub> undergoes
+two reversible, one-electron reductions (Figure 1, green trace). However, if oxygen is introduced, reversibility is lost as the reduced anzalyte can transfer an electron to dissolved O<sub>2</sub>, becoming oxidized through this chemical step (Figure 1, orange trace). To avoid interference from dissolved O<sub>2</sub>, all electrolyte solutions should be sparged with an inert gas before measurements are taken. Once all the O<sub>2</sub> is removed from the cell, the Teflon tubing used for sparging is placed above the surface of the solution to continue flushing the headspace while not perturbing the solution in the cell.</p>
+    </section>
+
+    <section class="main-section" id="Recording_the_Cyclic_Voltammogram">
+      <header>Recording the Cyclic Voltammogram</header>
+      <p>Once the cell has been assembled and sparged of oxygen and precautions have been taken to minimize ohmic drop, experiments can be run. The electrodes are connected to the potentiostat, and the experimental parameters are selected through the potentiostat software. While different software will require different parameters, fundamental ones are the potential window that will be scanned (defined by the initial, switching, and final potentials), the scan rate, and the number of segments/scans.
+Some potentiostats allow one to start the scan at the OCP, where the solution is at equilibrium, and no net current is passed Advanced parameters include an automatic or manual compensation of R<sub>u</sub> and are generally specific to each manufacturer’s instrument.</p>
+      <p>When electron transfer at the electrode surface is slow compared to
+mass transport, the process is termed “electrochemically irreversible.” As noted above in the Cyclic Voltammetry Profile section, slow electrode kinetics necessitate significantly more negative
+applied potentials for appreciable current to flow. As a result, peak-to-peak separation is larger than the 57 mV anticipated for an electrochemically reversible one-electron redox couple.Two Sequential Electron Transfer Reversible Process E<sub>r</sub>E<sub>r</sub>:<br><br>
+      <code>
+        Ox + e<sup>-</sup> ⇌ Red <br>
+        Red + e<sup>-</sup> ⇌ Q
+      </code><br><br>
+      Many complexes can undergo multiple reversible redox processes. For simplicity, we will only consider two electrochemical steps. The voltammogram appearance is dependent upon the difference in formal potential of the two electrochemical steps. If the second electrochemical step is thermodynamically
+more favorable than the first, the voltammogram appears identical to a Nernstian two-electron transfer, and the
+peak-to-peak separation (ΔEsub>p</sub>) will be 28.5 mV instead of the 57 mV predicted for a one-electron process.
+      EC Coupled Reaction E<sub>r</sub>C<sub>i</sub>: Reversible Electron Transfer Followed by an Irreversible Homogeneous Chemical
+Reaction. The simple case of a reduction followed by an irreversible chemical reaction is the E<sub>r</sub>C<sub>i</sub> mechanism:<br><br>
+      <code>
+        Ox + e<sup>-</sup> ⇌ Red <br>
+        Red -> Z<br><br>
+      </code>
+      A slow homogeneous chemical reaction (compared to the electron transfer) results in a voltammogram that appears reversible, because the amount of Red that reacts to form Z is negligible. CE Coupled Reaction C<sub>r</sub>E<sub>r</sub>: Reversible Chemical Step
+Followed by a Reversible Electron Transfer
+Another simple case is the C<sub>r</sub>E<sub>r mechanism:<br><br>
+      <code>
+        Z ⇌ Ox<br>
+        Ox + e<sup>-</sup> ⇌ Red<br><br>
+      </code></p>
+    </section>
+
+    <section class="main-section" id="Reference">
+      <header>Reference</header>
+      <ul>
+        <li>All the documentation in this page is taken from <a href="https://pubs.acs.org/doi/10.1021/acs.jchemed.7b00361">A Practical Beginner’s Guide to Cyclic Voltammetry</a>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

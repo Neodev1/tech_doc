@@ -1,0 +1,68 @@
+#navbar {
+  display: flex;
+  flex-direction: column;     /* stack items vertically */
+  padding-left: 0;
+  top: 0;          
+  left: 0;  
+  
+}
+ #navbar h3 {
+   position: sticky;
+   top: 0;                 /* REQUIRED for sticky to work */
+   background: white;    /* recommended so text doesn’t overlap when scrolling */
+   padding: 10px 5px;
+   margin: 0;
+   z-index: 1000;            /* avoids being hidden behind other elements */
+   font-size: 20px;
+   text-align: center;
+ }
+
+ #navbar ul {
+   list-style-type: none;
+   padding-left: 0;
+   margin: 2;
+ }
+ #navbar a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 0 60 0; 
+  }
+ #navbar li {
+   padding: 10px 15px;
+   border-bottom: 1px solid gold;
+ }
+ 
+header {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  @media (min-width: 500px) {
+  #navbar {
+    position: fixed;      /* always visible */
+    top: 0;               /* stick to top */
+    left: 0;              /* stick to left side */
+    width: 250px;         /* sidebar width */
+    height: 100vh;        /* full screen height */
+    overflow-y: auto;     /* scroll if content is long */
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    border-right: 1px solid #ccc;
+  
+  }
+
+  
+    main {
+    margin-left: 275px;
+  }
+ #image {
+ 	width: 350px;
+ 	height: auto;
+	display: block;
+	margin-left: auto;
+  	margin-right: auto;
+ }	
+ 
+ code {
+ 	background-color: #F8F8F8;
+ }
